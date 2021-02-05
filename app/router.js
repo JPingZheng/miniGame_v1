@@ -8,4 +8,5 @@ module.exports = app => {
 
   router.get('/', controller.home.index);
   router.post('/api/user/score', controller.rank.v1);
+  router.post('/api/user/info', controller.useInfo.v1);
 };

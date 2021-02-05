@@ -37,6 +37,34 @@ module.exports = appInfo => {
     },
   };
 
+  config.mysql = {
+    clients: {
+      bussiness: {
+        host: '127.0.0.1',
+        port: '3306',
+        user: 'root',
+        password: 'root',
+        database: 'mini-rank',
+      },
+    },
+    app: true, // 是否加载到 app 上，默认开启
+    agent: false, // 是否加载到 agent 上，默认关闭
+  };
+
+  config.sequelize = {
+    delegate: 'modelSequelize',
+    baseDir: 'modelSequelize',
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 33061,
+    username: 'root',
+    password: 'root',
+    database: 'mini-rank',
+    timezone: '+08:00',
+    logging: false, // 默认console.log，会将查询字段输出
+  };
+
+
   config.cors = {
     origin: [ '*' ],
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
@@ -51,6 +79,10 @@ module.exports = appInfo => {
       enable: false,
     },
   };
+
+  config.WETCHAT_AUTH2 = 'https://api.weixin.qq.com/sns/jscode2session'; // 微信登录凭证校验
+  config.WETCHAT_SECRET = '87a8b0ed1977f70b5e32e6aeef2ee513'; // 微信小程序密钥
+  config.WETCHAT_APPID = 'wxcb60b24abbf2680c'; // 微信小程序appid
   return {
     ...config,
     ...userConfig,
